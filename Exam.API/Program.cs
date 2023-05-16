@@ -1,3 +1,5 @@
+using Exam.Application;
+using Exam.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +17,12 @@ public class Program
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Exam.API", Version = "v1" });
         });
+        builder.Services.RegisterRepositories(builder.Configuration);
+        builder.Services.AddApplicationServices();
+        builder.Services.AddEndpointsApiExplorer();
+
         var app = builder.Build();
+
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -24,9 +31,8 @@ public class Program
         }
 
         app.UseRouting();
-
         app.UseAuthorization();
-
         app.MapControllers();
+        app.Run();
     }
 }
