@@ -365,3 +365,5 @@ FodyWeavers.xsd
 /src/Services/Attachment/wwwroot/content/images/3_0.jpeg
 /src/Services/Attachment/wwwroot/content/images/2_0.jpeg
 /src/Services/Attachment/OrgNet.IntSoft.Attachment/wwwroot/content/images
+.idea/
+.vscode/
